@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Employee Form</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/employee form.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+<div class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Employee</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="id">Employee ID</label>
+            <div class="col-md-4">
+                <input id="id" name="id" type="number" placeholder="" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="name">full name</label>
+            <div class="col-md-4">
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="points">points</label>
+            <div class="col-md-4">
+                <input id="points" name="points" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="role">role</label>
+            <div class="col-md-4">
+                <input id="role" name="role" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="number">phone no.</label>
+            <div class="col-md-4">
+                <input id="number" name="number" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">email</label>
+            <div class="col-md-4">
+                <input id="email" name="email" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="username">username</label>
+            <div class="col-md-4">
+                <input id="username" name="username" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="password">Password</label>
+            <div class="col-md-4">
+                <input id="password" name="password" type="password" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <div class="col-md-8">
+                <button id="button1id" name="button1id" class="add" onclick="addEmployee()">add</button>
+                <button id="singlebutton" name="singlebutton" class="edit" onclick="updateEmployee()">edit</button>
+                <button id="button2id" name="button2id" class="delete" onclick="deleteEmployee()">delete</button>
+
+            </div>
+        </div>
+
+    </fieldset>
+</div>
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-baqh{text-align:center;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table id="employeeTable" class="tg" style="undefined;table-layout: fixed; width: 435px; margin-top:10px">
+    <colgroup>
+        <col style="width: 50px">
+        <col style="width: 100px">
+        <col style="width: 70px">
+        <col style="width: 100px">
+        <col style="width: 70px">
+        <col style="width: 150px">
+        <col style="width: 90px">
+        <col style="width: 150px">
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="tg-0lax">ID</th>
+        <th class="tg-0lax">points</th>
+        <th class="tg-0lax">Role</th>
+        <th class="tg-0lax">Number</th>
+        <th class="tg-0lax">Name</th>
+        <th class="tg-baqh">Email</th>
+        <th class="tg-0lax">Username</th>
+        <th class="tg-0lax">Password</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+    </tr>
+    <tr>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+    </tr>-->
+    </tbody>
+</table>
+<script src="js/auth.js"></script>
+<script src="js/employeeDB.js"></script>
+</body>
+</html>

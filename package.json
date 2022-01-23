@@ -1,0 +1,10 @@
+{
+  "name": "guptazone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx light-server -s ."
+  },
+  "dependencies": {
+  }
+}
