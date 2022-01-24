@@ -11,10 +11,15 @@
 <body>
 <div class="verticalstack-btns1" style="display: block;">
   <button>Sales Record</button>
-  <button>Customer Record</button>
+  <button onclick="openCustomerDB()">Customer Record</button>
 </div>
 <script src="/js/auth.js"></script>
 <script src="js/customerDB.js"></script>
+<script>
+  function openCustomerDB() {
+    window.location.href = "customerform.html";
+  }
+</script>
 </body>
 
 </html>

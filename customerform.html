@@ -15,11 +15,11 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Employee</legend>
+        <legend>Customer</legend>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="id">Employee ID</label>
+            <label class="col-md-4 control-label" for="id">Customer ID</label>
             <div class="col-md-4">
                 <input id="id" name="id" type="number" placeholder="" class="form-control input-md" required="">
 
@@ -37,21 +37,21 @@
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="points">points</label>
+            <label class="col-md-4 control-label" for="date">date of birth</label>
             <div class="col-md-4">
-                <input id="points" name="points" type="text" placeholder="" class="form-control input-md">
+                <input id="date" name="date" type="date" placeholder="" class="form-control input-md">
 
             </div>
         </div>
 
         <!-- Text input-->
-        <div class="form-group">
+        <!--<div class="form-group">
             <label class="col-md-4 control-label" for="role">role</label>
             <div class="col-md-4">
                 <input id="role" name="role" type="text" placeholder="" class="form-control input-md">
 
             </div>
-        </div>
+        </div>-->
 
         <!-- Text input-->
         <div class="form-group">
@@ -111,7 +111,7 @@
     .tg .tg-baqh{text-align:center;vertical-align:top}
     .tg .tg-0lax{text-align:left;vertical-align:top}
 </style>
-<table id="employeeTable" class="tg" style="undefined;table-layout: fixed; width: 435px; margin-top:10px">
+<table id="customerTable" class="tg" style="undefined;table-layout: fixed; width: 435px; margin-top:10px">
     <colgroup>
         <col style="width: 50px">
         <col style="width: 100px">
@@ -125,8 +125,8 @@
     <thead>
     <tr>
         <th class="tg-0lax">ID</th>
-        <th class="tg-0lax">points</th>
-        <th class="tg-0lax">Role</th>
+        <th class="tg-0lax">date of birth</th>
+<!--        <th class="tg-0lax">Role</th>-->
         <th class="tg-0lax">Number</th>
         <th class="tg-0lax">Name</th>
         <th class="tg-baqh">Email</th>
@@ -158,6 +158,6 @@
     </tbody>
 </table>
 <script src="js/auth.js"></script>
-<script src="js/employeeDB.js"></script>
+<script src="js/customerDB.js"></script>
 </body>
 </html>
