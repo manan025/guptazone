@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx light-server -s .",
-    "start": "npx light-server -s .",
-    "build": "npx light-server -s ."
+    "test": "npx light-server -s ."
   },
   "dependencies": {
   }

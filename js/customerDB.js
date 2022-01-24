@@ -36,12 +36,15 @@ function addEmployee() {
             id: document.getElementById("id").value,
             name: document.getElementById("name").value,
             dob: document.getElementById("dob").value,
-            number: document.getElementById("number").value,
+            phone: document.getElementById("number").value,
             email: document.getElementById("email").value,
             username: document.getElementById("username").value,
             password: document.getElementById("password").value
         }])
         .then((data) => {
+            if (data.error) {
+                alert(data.error.message);
+            }
             // put data in the table
             var table = document.getElementById("customerTable");
             // make table with data
@@ -104,7 +107,7 @@ function updateEmployee() {
         .update({
             name: document.getElementById("name").value,
             dob: document.getElementById("dob").value,
-            number: document.getElementById("number").value,
+            phone: document.getElementById("number").value,
             email: document.getElementById("email").value,
             username: document.getElementById("username").value,
             password: document.getElementById("password").value
