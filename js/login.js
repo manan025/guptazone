@@ -50,6 +50,36 @@ function login(type) {
         });
 }
 
+const isValidEmail = (email) => {
+    if (email.length === 0) {
+        return false;
+    } else if (email.includes("@") && email.includes(".")) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function resetPassword() {
+    var userEmail = document.getElementById("email_field").value;
+    if (!isValidEmail(userEmail)) {
+        alert("Invalid Email");
+        return;
+    }
+    supabase.auth.api.resetPasswordForEmail(userEmail)
+        .then((response) => {
+            if (response.error) {
+                alert(response.error.message);
+            } else {
+                alert("Password reset email sent");
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            alert("Invalid credentials");
+        });
+}
+
 function addEmployee() {
     window.location = "/addEmployee.html";
 }

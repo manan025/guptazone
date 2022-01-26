@@ -16,8 +16,8 @@ const data = supabase.from('customers')
             id.innerHTML = customer[i].id;
             var dob = row.insertCell(1);
             dob.innerHTML = customer[i].dob;
-            var number = row.insertCell(2);
-            number.innerHTML = customer[i].number;
+            var phone = row.insertCell(2);
+            phone.innerHTML = customer[i].phone;
             var name = row.insertCell(3);
             name.innerHTML = customer[i].name;
             var email = row.insertCell(4);
@@ -28,9 +28,10 @@ const data = supabase.from('customers')
             password.innerHTML = customer[i].password;
         }
         table.style.fontSize = "12px";
+        loadDetails();
     })
 
-function addEmployee() {
+function addCustomer() {
     const data = supabase.from('customers')
         .insert([{
             id: document.getElementById("id").value,
@@ -56,8 +57,8 @@ function addEmployee() {
                 id.innerHTML = customer[i].id;
                 var dob = row.insertCell(1);
                 dob.innerHTML = customer[i].dob;
-                var number = row.insertCell(2);
-                number.innerHTML = customer[i].number;
+                var phone = row.insertCell(2);
+                phone.innerHTML = customer[i].phone;
                 var name = row.insertCell(3);
                 name.innerHTML = customer[i].name;
                 var email = row.insertCell(4);
@@ -71,38 +72,16 @@ function addEmployee() {
         })
 }
 
-function deleteEmployee() {
+function deleteCustomer() {
     const data = supabase.from('customers')
         .delete()
         .match({id: document.getElementById("id").value})
         .then((data) => {
-            // put data in the table
-            var table = document.getElementById("customerTable");
-            // make table with data
-            const customer = data.data;
-            for (let i = customer.length-1; i > -1; i--) {
-                // start from first cell of 2nd row
-                var row = table.insertRow(1);
-                var id = row.insertCell(0);
-                id.innerHTML = customer[i].id;
-                var dob = row.insertCell(1);
-                dob.innerHTML = customer[i].dob;
-                var number = row.insertCell(2);
-                number.innerHTML = customer[i].number;
-                var name = row.insertCell(3);
-                name.innerHTML = customer[i].name;
-                var email = row.insertCell(4);
-                email.innerHTML = customer[i].email;
-                var username = row.insertCell(5);
-                username.innerHTML = customer[i].username;
-                var password = row.insertCell(6);
-                password.innerHTML = customer[i].password;
-            }
-            table.style.fontSize = "12px";
+            window.location.reload();
         })
 }
 
-function updateEmployee() {
+function updateCustomer() {
     const data = supabase.from('customers')
         .update({
             name: document.getElementById("name").value,
@@ -125,8 +104,8 @@ function updateEmployee() {
                 id.innerHTML = customer[i].id;
                 var dob = row.insertCell(1);
                 dob.innerHTML = customer[i].dob;
-                var number = row.insertCell(2);
-                number.innerHTML = customer[i].number;
+                var phone = row.insertCell(2);
+                phone.innerHTML = customer[i].phone;
                 var name = row.insertCell(3);
                 name.innerHTML = customer[i].name;
                 var email = row.insertCell(4);
@@ -139,3 +118,32 @@ function updateEmployee() {
             table.style.fontSize = "12px";
         })
 }
+
+function loadDetails() {
+    var table = document.getElementById("customerTable");
+    for (let i = 0; i < table.rows.length; i++) {
+        // set click event for each row
+        table.rows[i].onclick = function () {
+            // get the row index
+            var rowIndex = this.rowIndex;
+            // get the cell values
+            var id = table.rows[rowIndex].cells[0].innerHTML;
+            var dob = table.rows[rowIndex].cells[1].innerHTML;
+            var phone = table.rows[rowIndex].cells[2].innerHTML;
+            var name = table.rows[rowIndex].cells[3].innerHTML;
+            var email = table.rows[rowIndex].cells[4].innerHTML;
+            var username = table.rows[rowIndex].cells[5].innerHTML;
+            var password = table.rows[rowIndex].cells[6].innerHTML;
+            // set the values in the form
+            document.getElementById("id").value = id;
+            document.getElementById("dob").value = dob;
+            document.getElementById("number").value = phone;
+            document.getElementById("name").value = name;
+            document.getElementById("email").value = email;
+            document.getElementById("username").value = username;
+            document.getElementById("password").value = password;
+        }
+    }
+    // get details from each cell
+}
+
