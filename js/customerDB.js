@@ -122,11 +122,9 @@ function updateCustomer() {
 function loadDetails() {
     var table = document.getElementById("customerTable");
     for (let i = 0; i < table.rows.length; i++) {
-        // set click event for each row
         table.rows[i].onclick = function () {
-            // get the row index
+
             var rowIndex = this.rowIndex;
-            // get the cell values
             var id = table.rows[rowIndex].cells[0].innerHTML;
             var dob = table.rows[rowIndex].cells[1].innerHTML;
             var phone = table.rows[rowIndex].cells[2].innerHTML;

@@ -9,7 +9,7 @@ const data = supabase.from('employees')
         var table = document.getElementById("employeeTable");
         // make table with data
         const emp = data.data;
-        for (let i = emp.length-1; i > -1; i--) {
+        for (let i = emp.length - 1; i > -1; i--) {
             // start from first cell of 2nd row
             var row = table.insertRow(1);
             var id = row.insertCell(0);
@@ -30,6 +30,7 @@ const data = supabase.from('employees')
             password.innerHTML = emp[i].password;
         }
         table.style.fontSize = "12px";
+        loadDetails();
     })
 
 function addEmployee() {
@@ -49,7 +50,7 @@ function addEmployee() {
             var table = document.getElementById("employeeTable");
             // make table with data
             const emp = data.data;
-            for (let i = emp.length-1; i > -1; i--) {
+            for (let i = emp.length - 1; i > -1; i--) {
                 // start from first cell of 2nd row
                 var row = table.insertRow(1);
                 var id = row.insertCell(0);
@@ -78,31 +79,7 @@ function deleteEmployee() {
         .delete()
         .match({id: document.getElementById("id").value})
         .then((data) => {
-            // put data in the table
-            var table = document.getElementById("employeeTable");
-            // make table with data
-            const emp = data.data;
-            for (let i = emp.length-1; i > -1; i--) {
-                // start from first cell of 2nd row
-                var row = table.insertRow(1);
-                var id = row.insertCell(0);
-                id.innerHTML = emp[i].id;
-                var salary = row.insertCell(1);
-                salary.innerHTML = emp[i].salary;
-                var role = row.insertCell(2);
-                role.innerHTML = emp[i].role.toString();
-                var number = row.insertCell(3);
-                number.innerHTML = emp[i].number;
-                var name = row.insertCell(4);
-                name.innerHTML = emp[i].name;
-                var email = row.insertCell(5);
-                email.innerHTML = emp[i].email;
-                var username = row.insertCell(6);
-                username.innerHTML = emp[i].username;
-                var password = row.insertCell(7);
-                password.innerHTML = emp[i].password;
-            }
-            table.style.fontSize = "12px";
+            window.location.reload();
         })
 }
 
@@ -118,34 +95,33 @@ function updateEmployee() {
             password: document.getElementById("password").value
         })
         .match({id: document.getElementById("id").value})
-        .then ((data) => {
-            // put data in the table
-            var table = document.getElementById("employeeTable");
-            for (let i = table.rows.length - 1; i > 0; i--) {
-                table.deleteRow(i);
-            }
-
-            const emp = data.data;
-            for (let i = emp.length-1; i > -1; i--) {
-                // start from first cell of 2nd row
-                var row = table.insertRow(1);
-                var id = row.insertCell(0);
-                id.innerHTML = emp[i].id;
-                var salary = row.insertCell(1);
-                salary.innerHTML = emp[i].salary;
-                var role = row.insertCell(2);
-                role.innerHTML = emp[i].role.toString();
-                var number = row.insertCell(3);
-                number.innerHTML = emp[i].number;
-                var name = row.insertCell(4);
-                name.innerHTML = emp[i].name;
-                var email = row.insertCell(5);
-                email.innerHTML = emp[i].email;
-                var username = row.insertCell(6);
-                username.innerHTML = emp[i].username;
-                var password = row.insertCell(7);
-                password.innerHTML = emp[i].password;
-            }
-            table.style.fontSize = "12px";
+        .then((data) => {
+            window.location.reload();
         })
+}
+
+function loadDetails() {
+    const table = document.getElementById("employeeTable");
+    for (let i = 0; i < table.rows.length; i++) {
+        table.rows[i].onclick = function () {
+            var rowIndex = this.rowIndex;
+            var id = table.rows[rowIndex].cells[0].innerHTML;
+            var salary = table.rows[rowIndex].cells[1].innerHTML;
+            var role = table.rows[rowIndex].cells[2].innerHTML;
+            var number = table.rows[rowIndex].cells[3].innerHTML;
+            var name = table.rows[rowIndex].cells[4].innerHTML;
+            var email = table.rows[rowIndex].cells[5].innerHTML;
+            var username = table.rows[rowIndex].cells[6].innerHTML;
+            var password = table.rows[rowIndex].cells[7].innerHTML;
+
+            document.getElementById("id").value = id;
+            document.getElementById("salary").value = salary;
+            document.getElementById("role").value = role;
+            document.getElementById("number").value = number;
+            document.getElementById("name").value = name;
+            document.getElementById("email").value = email;
+            document.getElementById("username").value = username;
+            document.getElementById("password").value = password;
+        }
+    }
 }
