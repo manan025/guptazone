@@ -16,13 +16,17 @@ if (user != null) {
 }
 
 function signup() {
-    supabase.auth.signUp({email: "sample@gmail.com", password: "12345678"});
+    supabase.auth.signUp({email: "123@gmail.com", password: "12345678"});
     console.log("signup");
 }
 
 function login(type) {
     var userEmail = document.getElementById("email_field").value;
     var userPass = document.getElementById("password_field").value;
+    if (type === "") {
+        alert("Technical Error. Please contact admin.");
+        return;
+    }
     supabase.auth.signIn({email: userEmail, password: userPass})
         .then((response) => {
             if (response.error) {
@@ -37,7 +41,7 @@ function login(type) {
                 } else if (type === "employee") {
                     redirect = "employeedashboard.html";
                 } else if (type === "customer") {
-                    redirect = "customerdashboard.html";
+                    redirect = "customerDashboard.html";
                 } else {
                     redirect = "index.html";
                 }

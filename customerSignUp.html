@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Sign Up</title>
     <link rel="stylesheet" href="css/signUp.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
 <div class="form">
@@ -54,6 +55,13 @@
 
                 <div class="field-wrap">
                     <label>
+                        Phone Number<span class="req">*</span>
+                    </label>
+                    <input type="tel" required autocomplete="off" id="phoneNumber"/>
+                </div>
+
+                <div class="field-wrap">
+                    <label>
                         Password<span class="req">*</span>
                     </label>
                     <input type="password" required autocomplete="off" id="password" />
@@ -65,15 +73,14 @@
                     <input type="password" required autocomplete="off" id="confirmPassword" />
                 </div>
 
-                <button type="submit" class="button button-block" onclick="signup()">Get Started</button>
+                <button class="button button-block" onclick="signup()">Get Started</button>
 
             </form>
         </div>
     </div>
 </div> <!-- /form -->
-<script src="js/auth.js"></script>
 <script src="js/signup.js"></script>
 
-<script src="" async defer></script>
+<!--<script src="" async defer></script>-->
 </body>
 </html>

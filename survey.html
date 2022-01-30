@@ -3,16 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/survey.css">
 </head>
 <body>
 <!-- make form for survey with rating and comments -->
-<form action="survey.php" method="post">
-    <p>How likely are you to recommend this website to a friend or colleague?</p>
-    <input type="radio" name="rating" value="1">1
-    <input type="radio" name="rating" value="2">2
-    <input type="radio" name="rating" value="3">3
-    <input type="radio" name="rating" value="4">4
-    <input type="radio" name="rating" value="5">5
+<div class="form-horizontal">
+    <fieldset>
 
+        <!-- Form Name -->
+        <legend>Survey</legend>
+
+        <!-- Text input-->
+        <!-- <div class="form-group">
+            <label class="col-md-4 control-label" for="id">Customer ID</label>
+            <div class="col-md-4">
+                <input id="id" name="id" type="number" placeholder="" class="form-control input-md" required="">
+
+            </div>
+		</div> -->
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Location</label>
+            <div class="col-md-4">
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">email</label>
+            <div class="col-md-4">
+                <input id="email" name="email" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="username">username</label>
+            <div class="col-md-4">
+                <input id="username" name="username" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="password">Password</label>
+            <div class="col-md-4">
+                <input id="password" name="password" type="password" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+<!--                <button id="button1" name="button1" class="btn btn-primary btn-lg" onclick="submit()">Submit</button>-->
+                <input type="button" value="Submit" class="btn btn-primary btn-lg center" onclick="window.location.href='index.html'">
+            </div>
+        </div>
+
+    </fieldset>
+</div>
 </body>
 </html>

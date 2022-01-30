@@ -1,3 +1,14 @@
+var SUPABASE_URL = "https://sgynisobekfrtdbzwzvs.supabase.co";
+var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNjQyOTQ1NTc5LCJleHAiOjE5NTg1MjE1Nzl9.ab7_Cr_sR4n0OsxXYqunBdG-tjAgrkrmqiqBjtFwTPc';
+var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const user = supabase.auth.user()
+
+
+if (user != null) {
+    window.location.href='customerDashboard.html';
+}
+
 function validateEmail(email) {
     // check if email follows the format
     if ("" === email) {
@@ -16,6 +27,7 @@ function signup() {
     const phoneNumber = document.getElementById('phoneNumber').value;
     const dob = document.getElementById('dob').value;
     // form validation
+    console.log("validation")
     if (email === '' || password === '' || confirmPassword === '' || firstName === '' || lastName === '' || phoneNumber === '' || dob === '') {
         alert('Please fill in all fields');
         return;
@@ -37,25 +49,31 @@ function signup() {
         alert('Please enter a valid email');
         return;
     }
+    console.log("validation passed")
     const data = supabase.auth.signUp({
         email: email,
         password: password
-    }, {
-        data: {
-            firstName: firstName,
-            lastName: lastName,
-            phoneNumber: phoneNumber
-        }
     })
         .then(() => {
+            console.log("signup success")
+            const user = supabase.auth.user()
+            console.log(user)
             addDB(email, password, firstName, lastName, phoneNumber, dob);
         })
+
+}
+
+const randomNumber = () => {
+    return Math.floor(Math.random() * 1000000) + 1;
 }
 
 function addDB(email, password, firstName, lastName, phoneNumber, dob) {
+    console.log("addDB")
+    console.log(firstName + " " + lastName)
     const data = supabase
         .from('customers')
         .insert([{
+            id: randomNumber(),
             email: email,
             password: password,
             name: firstName + ' ' + lastName,

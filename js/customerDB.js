@@ -31,10 +31,16 @@ const data = supabase.from('customers')
         loadDetails();
     })
 
+
+const assignID = () => {
+    // random number
+    return Math.floor(Math.random() * 1000000);
+}
+
 function addCustomer() {
     const data = supabase.from('customers')
         .insert([{
-            id: document.getElementById("id").value,
+            id: assignID(),
             name: document.getElementById("name").value,
             dob: document.getElementById("dob").value,
             phone: document.getElementById("number").value,
@@ -46,6 +52,7 @@ function addCustomer() {
             if (data.error) {
                 alert(data.error.message);
             }
+            window.location.reload();
             // put data in the table
             var table = document.getElementById("customerTable");
             // make table with data
@@ -93,9 +100,9 @@ function updateCustomer() {
         })
         .match({id: document.getElementById("id").value})
         .then ((data) => {
+            window.location.reload();
             // put data in the table
             var table = document.getElementById("customerTable");
-
             const customer = data.data;
             for (let i = customer.length-1; i > -1; i--) {
                 // start from first cell of 2nd row
