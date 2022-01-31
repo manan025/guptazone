@@ -53,6 +53,13 @@ function signup() {
     const data = supabase.auth.signUp({
         email: email,
         password: password
+    }, {
+        data: {
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber,
+            dob: dob
+        }
     })
         .then(() => {
             console.log("signup success")

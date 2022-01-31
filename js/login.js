@@ -7,9 +7,19 @@ const user = supabase.auth.user()
 
 
 if (user != null) {
-    // remove login button
-    document.getElementById("login_div").style.display = "none";
-    document.getElementById("user_div").style.display = "block";
+    if (window.location.pathname === "/employee.html" && localStorage.getItem("type") === "employee") {
+        auth = true;
+    } else if (window.location.pathname === "/customer.html" && localStorage.getItem("type") === "customer") {
+        auth = true;
+    } else if (window.location.pathname === "/manager.html" && localStorage.getItem("type") === "manager") {
+        auth = true;
+    } else {
+        auth = false;
+    }
+    if (auth) {
+        document.getElementById("login_div").style.display = "none";
+        document.getElementById("user_div").style.display = "block";
+    }
 } else {
     document.getElementById("user_div").style.display = "none";
     document.getElementById("login_div").style.display = "block";
@@ -37,10 +47,13 @@ function login(type) {
                 let redirect = "";
                 if (type === "manager") {
                     // redirect = "managerdashboard.html";
+                    localStorage.setItem('type', "manager");
                     window.location.reload();
                 } else if (type === "employee") {
+                    localStorage.setItem('type', "employee");
                     redirect = "employeedashboard.html";
                 } else if (type === "customer") {
+                    localStorage.setItem('type', "customer");
                     redirect = "customerDashboard.html";
                 } else {
                     redirect = "index.html";
