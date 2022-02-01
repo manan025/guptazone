@@ -19,6 +19,7 @@ function validateEmail(email) {
 }
 
 function signup() {
+    const username = document.getElementById("username").value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
@@ -26,8 +27,6 @@ function signup() {
     const lastName = document.getElementById('lastName').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const dob = document.getElementById('dob').value;
-    // form validation
-    console.log("validation")
     if (email === '' || password === '' || confirmPassword === '' || firstName === '' || lastName === '' || phoneNumber === '' || dob === '') {
         alert('Please fill in all fields');
         return;
@@ -55,6 +54,7 @@ function signup() {
         password: password
     }, {
         data: {
+            username: username,
             firstName: firstName,
             lastName: lastName,
             phoneNumber: phoneNumber,
@@ -65,7 +65,7 @@ function signup() {
             console.log("signup success")
             const user = supabase.auth.user()
             console.log(user)
-            addDB(email, password, firstName, lastName, phoneNumber, dob);
+            addDB(email, password, firstName, lastName, phoneNumber, dob, username);
         })
 
 }
@@ -74,7 +74,7 @@ const randomNumber = () => {
     return Math.floor(Math.random() * 1000000) + 1;
 }
 
-function addDB(email, password, firstName, lastName, phoneNumber, dob) {
+function addDB(email, password, firstName, lastName, phoneNumber, dob, username) {
     console.log("addDB")
     console.log(firstName + " " + lastName)
     const data = supabase
@@ -85,7 +85,8 @@ function addDB(email, password, firstName, lastName, phoneNumber, dob) {
             password: password,
             name: firstName + ' ' + lastName,
             phone: phoneNumber,
-            dob: dob
+            dob: dob,
+            username: username
         }])
         .then(() => {
             alert('Account created successfully, please verify your email.');
