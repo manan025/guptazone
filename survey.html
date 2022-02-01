@@ -5,6 +5,7 @@
     <title>Survey</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/survey.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
 <!-- make form for survey with rating and comments -->
@@ -19,12 +20,12 @@
                     <input type="radio" name="location" id="yes_lc1" value="1">
                     Abu Dhabi
                 </label>
-                <label class="radio-inline" for="no_lc2">
-                    <input type="radio" name="location" id="no_lc2" value="2">
+                <label class="radio-inline" for="lc2">
+                    <input type="radio" name="location" id="lc2" value="2">
                     Dubai
                 </label>
-                <label class="radio-inline" for="no_lc3">
-                    <input type="radio" name="location" id="no_lc3" value="2">
+                <label class="radio-inline" for="lc3">
+                    <input type="radio" name="location" id="lc3" value="2">
                     New Delhi
                 </label>
             </div>
@@ -63,11 +64,12 @@
         <div class="form-group">
             <div class="col-md-4 control-label">
 <!--                <button id="button1" name="button1" class="btn btn-primary btn-lg" onclick="submit()">Submit</button>-->
-                <input type="button" value="Submit" class="btn btn-primary btn-lg center" onclick="window.location.href='index.html'">
+                <input type="button" value="Submit" class="btn btn-primary btn-lg center" onclick="submitSurvey()">
             </div>
         </div>
     </fieldset>
 </div>
+<script src="js/auth.js"></script>
+<script src="js/survey.js"></script>
 </body>
-<script></script>
 </html>

@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="/css/manager.css"/>
-  <script src="js/back.js"></script>
-  <script src="/js/next.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/manager.css"/>
+    <script src="js/back.js"></script>
+    <script src="/js/next.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
 
 <div id="login_div" class="main-div">
-  <button onclick="backindex()">Back</button>
-  <h3> Login </h3>
-  <input type="email" placeholder="Email" id="email_field" />
-  <input type="password" placeholder="Password" id="password_field" />
-  <button onclick="login('manager')" class="btns">Login to Account</button>
+    <button onclick="backindex()">Back</button>
+    <h3> Login </h3>
+    <input type="email" placeholder="Email" id="email_field"/>
+    <input type="password" placeholder="Password" id="password_field"/>
+    <button onclick="login('manager')" class="btns">Login to Account</button>
 </div>
 <div id="user_div" class="loggedin-div">
-  <button onclick="logout()" class="btns">Logout</button>
-  <button onclick="managerDashboard()" class="btns">Manager Dashboard</button>
+    <button onclick="logout()" class="btns">Logout</button>
+    <button onclick="managerDashboard()" class="btns">Manager Dashboard</button>
 </div>
 
 <!--<script src="/js/manager.js"></script>-->
