@@ -1,7 +1,3 @@
-/*var SUPABASE_URL = "https://sgynisobekfrtdbzwzvs.supabase.co";
-var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNjQyOTQ1NTc5LCJleHAiOjE5NTg1MjE1Nzl9.ab7_Cr_sR4n0OsxXYqunBdG-tjAgrkrmqiqBjtFwTPc';
-var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);*/
-
 const data = supabase.from('customers')
     .select()
     .then((data) => {
@@ -24,8 +20,6 @@ const data = supabase.from('customers')
             email.innerHTML = customer[i].email;
             var username = row.insertCell(5);
             username.innerHTML = customer[i].username;
-            var password = row.insertCell(6);
-            password.innerHTML = customer[i].password;
         }
         table.style.fontSize = "12px";
         loadDetails();
@@ -45,8 +39,7 @@ function addCustomer() {
             dob: document.getElementById("dob").value,
             phone: document.getElementById("number").value,
             email: document.getElementById("email").value,
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
+            username: document.getElementById("username").value
         }])
         .then((data) => {
             if (data.error) {
@@ -72,8 +65,6 @@ function addCustomer() {
                 email.innerHTML = customer[i].email;
                 var username = row.insertCell(5);
                 username.innerHTML = customer[i].username;
-                var password = row.insertCell(6);
-                password.innerHTML = customer[i].password;
             }
             table.style.fontSize = "12px";
         })
@@ -95,8 +86,7 @@ function updateCustomer() {
             dob: document.getElementById("dob").value,
             phone: document.getElementById("number").value,
             email: document.getElementById("email").value,
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
+            username: document.getElementById("username").value
         })
         .match({id: document.getElementById("id").value})
         .then ((data) => {
@@ -119,8 +109,6 @@ function updateCustomer() {
                 email.innerHTML = customer[i].email;
                 var username = row.insertCell(5);
                 username.innerHTML = customer[i].username;
-                var password = row.insertCell(6);
-                password.innerHTML = customer[i].password;
             }
             table.style.fontSize = "12px";
         })
@@ -138,7 +126,6 @@ function loadDetails() {
             var name = table.rows[rowIndex].cells[3].innerHTML;
             var email = table.rows[rowIndex].cells[4].innerHTML;
             var username = table.rows[rowIndex].cells[5].innerHTML;
-            var password = table.rows[rowIndex].cells[6].innerHTML;
             // set the values in the form
             document.getElementById("id").value = id;
             document.getElementById("dob").value = dob;
@@ -146,7 +133,6 @@ function loadDetails() {
             document.getElementById("name").value = name;
             document.getElementById("email").value = email;
             document.getElementById("username").value = username;
-            document.getElementById("password").value = password;
         }
     }
     // get details from each cell

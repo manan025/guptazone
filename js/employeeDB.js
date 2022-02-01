@@ -1,7 +1,3 @@
-/*var SUPABASE_URL = "https://sgynisobekfrtdbzwzvs.supabase.co";
-var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNjQyOTQ1NTc5LCJleHAiOjE5NTg1MjE1Nzl9.ab7_Cr_sR4n0OsxXYqunBdG-tjAgrkrmqiqBjtFwTPc';
-var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);*/
-
 const data = supabase.from('employees')
     .select()
     .then((data) => {
@@ -26,8 +22,6 @@ const data = supabase.from('employees')
             email.innerHTML = emp[i].email;
             var username = row.insertCell(6);
             username.innerHTML = emp[i].username;
-            var password = row.insertCell(7);
-            password.innerHTML = emp[i].password;
         }
         table.style.fontSize = "12px";
         loadDetails();
@@ -42,8 +36,7 @@ function addEmployee() {
             role: document.getElementById("role").value,
             number: document.getElementById("number").value,
             email: document.getElementById("email").value,
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
+            username: document.getElementById("username").value
         }])
         .then((data) => {
             // put data in the table
@@ -67,8 +60,6 @@ function addEmployee() {
                 email.innerHTML = emp[i].email;
                 var username = row.insertCell(6);
                 username.innerHTML = emp[i].username;
-                var password = row.insertCell(7);
-                password.innerHTML = emp[i].password;
             }
             table.style.fontSize = "12px";
         })
@@ -78,7 +69,7 @@ function deleteEmployee() {
     const data = supabase.from('employees')
         .delete()
         .match({id: document.getElementById("id").value})
-        .then((data) => {
+        .then(() => {
             window.location.reload();
         })
 }
@@ -91,8 +82,7 @@ function updateEmployee() {
             role: document.getElementById("role").value,
             number: document.getElementById("number").value,
             email: document.getElementById("email").value,
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
+            username: document.getElementById("username").value
         })
         .match({id: document.getElementById("id").value})
         .then((data) => {
@@ -112,7 +102,6 @@ function loadDetails() {
             var name = table.rows[rowIndex].cells[4].innerHTML;
             var email = table.rows[rowIndex].cells[5].innerHTML;
             var username = table.rows[rowIndex].cells[6].innerHTML;
-            var password = table.rows[rowIndex].cells[7].innerHTML;
 
             document.getElementById("id").value = id;
             document.getElementById("salary").value = salary;
@@ -121,7 +110,6 @@ function loadDetails() {
             document.getElementById("name").value = name;
             document.getElementById("email").value = email;
             document.getElementById("username").value = username;
-            document.getElementById("password").value = password;
         }
     }
 }
