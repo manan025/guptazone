@@ -5,7 +5,7 @@ var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const user = supabase.auth.user()
 
-
+// checks if user is signed in and type of user
 if (user != null) {
     if (window.location.pathname === "/employee.html" && localStorage.getItem("type") === "employee") {
         auth = true;
@@ -23,11 +23,6 @@ if (user != null) {
 } else {
     document.getElementById("user_div").style.display = "none";
     document.getElementById("login_div").style.display = "block";
-}
-
-function signup() {
-    supabase.auth.signUp({email: "123@gmail.com", password: "12345678"});
-    console.log("signup");
 }
 
 function login(type) {
@@ -77,6 +72,7 @@ const isValidEmail = (email) => {
     }
 }
 
+// reset password
 function resetPassword() {
     var userEmail = document.getElementById("email_field").value;
     if (!isValidEmail(userEmail)) {

@@ -4,11 +4,13 @@ var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const user = supabase.auth.user()
 
-
+// checks if user is signed in
 if (user != null) {
     window.location.href='customerDashboard.html';
 }
 
+
+// email validation
 function validateEmail(email) {
     // check if email follows the format
     if ("" === email) {
@@ -27,6 +29,8 @@ function signup() {
     const lastName = document.getElementById('lastName').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const dob = document.getElementById('dob').value;
+
+    // customer data validation
     if (email === '' || password === '' || confirmPassword === '' || firstName === '' || lastName === '' || phoneNumber === '' || dob === '') {
         alert('Please fill in all fields');
         return;
@@ -58,7 +62,8 @@ function signup() {
             firstName: firstName,
             lastName: lastName,
             phoneNumber: phoneNumber,
-            dob: dob
+            dob: dob,
+            type: "customer"
         }
     })
         .then(() => {
@@ -74,6 +79,7 @@ const randomNumber = () => {
     return Math.floor(Math.random() * 1000000) + 1;
 }
 
+// database creation for user on signup
 function addDB(email, password, firstName, lastName, phoneNumber, dob, username) {
     console.log("addDB")
     console.log(firstName + " " + lastName)

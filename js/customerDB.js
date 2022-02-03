@@ -28,6 +28,7 @@ const data = supabase.from('customers')
 
 const assignID = () => {
     // random number
+    // TODO: check if ID exists on supabase
     return Math.floor(Math.random() * 1000000);
 }
 
@@ -114,6 +115,8 @@ function updateCustomer() {
         })
 }
 
+
+// fill details by clicking on row
 function loadDetails() {
     var table = document.getElementById("customerTable");
     for (let i = 0; i < table.rows.length; i++) {
