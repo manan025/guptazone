@@ -2,7 +2,7 @@ const data = supabase.from('employees')
     .select()
     .then((data) => {
         // put data in the table
-        var table = document.getElementById("employeeTable");
+        let table = document.getElementById("employeeTable");
         // make table with data
         const emp = data.data;
         for (let i = emp.length - 1; i > -1; i--) {

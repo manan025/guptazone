@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/employee form.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+<div class="form-horizontal" id="form">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Customer</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="customer_id">Customer ID</label>
+            <div class="col-md-4">
+                <input id="customer_id" name="customer_id" type="text" placeholder="" class="form-control input-md"
+                       required="">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="sales_id">Sales ID</label>
+            <div class="col-md-4">
+                <input id="sales_id" name="sales_id" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="total_amount">Total Amount</label>
+            <div class="col-md-4">
+                <input id="total_amount" name="total_amount" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="discount">Discount (%)</label>
+            <div class="col-md-4">
+                <input id="discount" name="discount" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="final_amount">Final amount</label>
+            <div class="col-md-4">
+                <input id="final_amount" name="items" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-5 control-label" for="items">Items</label>
+            <div class="col-md-5">
+                <input id="items" name="items" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+        <p>Paid:</p>
+          <input type="radio" id="paid" name="payment" value="paid">
+          <label for="paid">Yes</label><br>
+          <input type="radio" id="unpaid" name="payment" value="unpaid">
+          <label for="unpaid">No</label><br>
+        <p>Mode of Payment:</p>
+          <input type="radio" id="cash" name="mode" value="cash">
+          <label for="cash">Cash</label><br>
+          <input type="radio" id="card" name="mode" value="card">
+          <label for="card">Card</label><br>
+          <input type="radio" id="other" name="mode" value="other">
+          <label for="other">Other</label>
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <div class="col-md-8">
+                <button id="submit" onclick="addData()" name="button1id" class="add">Done</button>
+                <button id="button1id" onclick="printData()" name="button1id" class="add">Print</button>
+            </div>
+        </div>
+
+    </fieldset>
+</div>
+<style>
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .tg td {
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+    }
+
+    .tg th {
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+    }
+
+    .tg .tg-baqh {
+        text-align: center;
+        vertical-align: top
+    }
+
+    .tg .tg-0lax {
+        text-align: left;
+        vertical-align: top
+    }
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 435px; margin-top:10px" id="salesTable">
+    <colgroup>
+        <col style="width: 100px">
+        <col style="width: 100px">
+        <col style="width: 100px">
+        <col style="width: 100px">
+        <col style="width: 100px">
+        <col style="width: 100px">
+        <col style="width: 100px">
+        <col style="width: 100px">
+        <col style="width: 100px">
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="tg-0lax">Sales ID</th>
+        <th class="tg-0lax">Customer ID</th>
+        <th class="tg-0lax">Date</th>
+        <th class="tg-0lax">Total amount</th>
+        <th class="tg-0lax">Discount (%)</th>
+        <th class="tg-0lax">Final amount</th>
+        <th class="tg-0lax">Items</th>
+        <th class="tg-baqh">Payment Status</th>
+        <th class="tg-baqh">Mode of payment</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+    </tr>
+    <tr>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+    </tr>-->
+    </tbody>
+</table>
+<script src="js/auth.js"></script>
+<script src="js/salesrecord.js"></script>
+</body>
+</html>
