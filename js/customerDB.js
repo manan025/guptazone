@@ -58,6 +58,9 @@ function addCustomer() {
             if (data.error) {
                 alert(data.error.message);
             }
+            supabase.auth
+                .api
+                .inviteUserByEmail(document.getElementById("email").value, "customer")
             window.location.reload();
             // put data in the table
             var table = document.getElementById("customerTable");
