@@ -29,6 +29,18 @@ const data = supabase.from('customers')
 const assignID = () => {
     // random number
     // TODO: check if ID exists on supabase
+    supabase.from('customers')
+        .select()
+        .then((data) => {
+            const id = Math.floor(Math.random() * 1000000);
+            let customer = data.data;
+            for (let i = 0; i < customer.length; i++) {
+                if (customer[i].id === id) {
+                    assignID();
+                }
+            }
+            document.getElementById("id").value = id;
+        })
     return Math.floor(Math.random() * 1000000);
 }
 
