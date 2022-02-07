@@ -1,4 +1,4 @@
-const data = supabase.from('sales_record')
+supabase.from('sales_record')
     .select()
     .then(data => {
         let table = document.getElementById('salesTable');
@@ -40,7 +40,29 @@ const addData = () => {
     } else if (document.getElementById('other').checked) {
         mode = "other";
     }
-    const data = supabase.from('sales_record')
+    let cont = true;
+    if (!paid && mode.length > 0) {
+        alert("Customer has not paid yet. Please pay first.");
+        document.getElementById('cash').checked = false;
+        document.getElementById('card').checked = false;
+        document.getElementById('other').checked = false;
+        cont = false;
+    }
+
+    const customer = document.getElementById('customer_id').value;
+    supabase.from('customers')
+        .select()
+        .match({id: customer})
+        .then(data => {
+            if (data.data.length === 0) {
+                alert("Customer not found");
+                cont = false;
+            }
+        })
+    if (!cont) {
+        return;
+    }
+    supabase.from('sales_record')
         .insert({
             sales_id: document.getElementById('sales_id').value,
             customer_id: document.getElementById('customer_id').value,
@@ -53,7 +75,6 @@ const addData = () => {
             payment_method: mode
         })
         .then(data => {
-            console.log(data);
             alert('Data inserted successfully');
             window.location.reload();
         })
