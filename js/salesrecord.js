@@ -1,5 +1,6 @@
 supabase.from('sales_record')
     .select()
+    .order('final_amount', {ascending: true})
     .then(data => {
         let table = document.getElementById('salesTable');
         const record = data.data;
