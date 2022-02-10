@@ -28,7 +28,6 @@ const data = supabase.from('customers')
 
 const assignID = () => {
     // random number
-    // TODO: check if ID exists on supabase
     supabase.from('customers')
         .select()
         .then((data) => {

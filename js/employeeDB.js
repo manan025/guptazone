@@ -27,10 +27,27 @@ const data = supabase.from('employees')
         loadDetails();
     })
 
+const assignID = () => {
+    // random number
+    supabase.from('customers')
+        .select()
+        .then((data) => {
+            const id = Math.floor(Math.random() * 1000000);
+            let customer = data.data;
+            for (let i = 0; i < customer.length; i++) {
+                if (customer[i].id === id) {
+                    assignID();
+                }
+            }
+            document.getElementById("id").value = id;
+        })
+    return Math.floor(Math.random() * 1000000);
+}
+
 function addEmployee() {
     const data = supabase.from('employees')
         .insert([{
-            id: document.getElementById("id").value,
+            id: assignID(),
             name: document.getElementById("name").value,
             salary: document.getElementById("salary").value,
             role: document.getElementById("role").value,
